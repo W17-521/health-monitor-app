@@ -18,8 +18,8 @@ export function PetCard({ pet }: PetCardProps) {
 
   return (
     <MetricCard onClick={() => navigate('/pet')}>
-      <div className="flex items-center gap-4">
-        <div className="text-4xl">{TYPE_EMOJI[pet.type]}</div>
+      <div className="flex items-center gap-4 w-full">
+        <div className="text-4xl shrink-0">{TYPE_EMOJI[pet.type]}</div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="font-semibold text-sm">{pet.name}</span>
@@ -27,11 +27,11 @@ export function PetCard({ pet }: PetCardProps) {
             <span>{MOOD_EMOJI[pet.mood]}</span>
           </div>
           <div className="mt-2 flex items-center gap-2">
-            <span className="text-xs text-gray-500 w-10">饥饿</span>
+            <span className="text-xs text-gray-500 w-10 shrink-0">饥饿</span>
             <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
               <div className="h-full bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transition-all" style={{ width: `${pet.hunger}%` }} />
             </div>
-            <span className="text-xs text-gray-400 tabular-nums">{pet.hunger}%</span>
+            <span className="text-xs text-gray-400 tabular-nums shrink-0">{pet.hunger}%</span>
           </div>
           <p className="text-xs text-gray-400 mt-2">今天动够了吗？喂我 →</p>
         </div>

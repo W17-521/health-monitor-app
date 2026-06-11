@@ -11,7 +11,7 @@ export function PageHeader({ title, leftAction, rightAction, transparent }: Page
   return (
     <header
       className={`sticky top-0 z-40 flex items-center justify-between h-12 px-4 ${
-        transparent ? 'bg-transparent' : 'bg-white/80 backdrop-blur-lg border-b border-gray-100'
+        transparent ? 'bg-transparent' : 'bg-white/35 backdrop-blur-xl border-b border-[rgba(123,159,255,0.12)]'
       }`}
     >
       <div className="flex-1 min-w-0 flex items-center">{leftAction}</div>

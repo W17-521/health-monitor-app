@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 interface ProgressRingProps {
   percent: number;
   size?: number;
@@ -8,20 +10,23 @@ interface ProgressRingProps {
   onClick?: () => void;
 }
 
+let _counter = 0;
+
 export function ProgressRing({
   percent,
   size = 140,
   strokeWidth = 10,
-  color = 'url(#ringGradient)',
+  color,
   trackColor = '#E8ECF4',
   children,
   onClick,
 }: ProgressRingProps) {
+  const gradientId = useMemo(() => `ring-grad-${++_counter}`, []);
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const clamped = Math.max(0, Math.min(100, percent));
   const offset = circumference * (1 - clamped / 100);
-  const id = `ring-${Math.random().toString(36).slice(2, 8)}`;
+  const strokeColor = color ?? `url(#${gradientId})`;
 
   const Component = onClick ? 'button' : 'div';
 
@@ -33,7 +38,7 @@ export function ProgressRing({
     >
       <svg width={size} height={size} className="-rotate-90">
         <defs>
-          <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#7B9FFF" />
             <stop offset="100%" stopColor="#A78BFA" />
           </linearGradient>
@@ -44,7 +49,7 @@ export function ProgressRing({
         />
         <circle
           cx={size / 2} cy={size / 2} r={radius}
-          fill="none" stroke={color} strokeWidth={strokeWidth}
+          fill="none" stroke={strokeColor} strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}

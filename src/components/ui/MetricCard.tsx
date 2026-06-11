@@ -7,12 +7,10 @@ interface MetricCardProps {
 }
 
 export function MetricCard({ children, onClick, className = '' }: MetricCardProps) {
+  const base = 'jelly-card w-full text-left';
   const Component = onClick ? 'button' : 'div';
   return (
-    <Component
-      onClick={onClick}
-      className={`${onClick ? 'jelly-card' : 'glass-card'} ${className}`}
-    >
+    <Component onClick={onClick} className={`${base} ${className}`}>
       {children}
     </Component>
   );

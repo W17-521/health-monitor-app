@@ -44,7 +44,7 @@ export function HomeScreen() {
 
       <div className="px-4 space-y-3 pb-4">
         {/* Today's Overview */}
-        <div className="bg-white rounded-card shadow-sm p-4">
+        <div className="jelly-card p-4">
           <p className="text-xs text-gray-500 mb-1">今日目标</p>
           <CalorieRing stats={dailyStats} />
           <StatsRow stats={dailyStats} />
