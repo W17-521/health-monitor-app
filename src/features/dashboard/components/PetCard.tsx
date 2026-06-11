@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { MetricCard } from '@/components/ui';
 import type { PetStatus } from '@/types';
 
@@ -6,19 +7,17 @@ interface PetCardProps {
 }
 
 const MOOD_EMOJI: Record<PetStatus['mood'], string> = {
-  happy: '😊',
-  neutral: '😐',
-  sad: '😢',
+  happy: '😊', neutral: '😐', sad: '😢',
 };
-
 const TYPE_EMOJI: Record<PetStatus['type'], string> = {
-  dog: '🐶',
-  cat: '🐱',
+  dog: '🐶', cat: '🐱',
 };
 
 export function PetCard({ pet }: PetCardProps) {
+  const navigate = useNavigate();
+
   return (
-    <MetricCard>
+    <MetricCard onClick={() => navigate('/pet')}>
       <div className="flex items-center gap-4">
         <div className="text-4xl">{TYPE_EMOJI[pet.type]}</div>
         <div className="flex-1 min-w-0">
@@ -30,10 +29,7 @@ export function PetCard({ pet }: PetCardProps) {
           <div className="mt-2 flex items-center gap-2">
             <span className="text-xs text-gray-500 w-10">饥饿</span>
             <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-primary rounded-full transition-all"
-                style={{ width: `${pet.hunger}%` }}
-              />
+              <div className="h-full bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transition-all" style={{ width: `${pet.hunger}%` }} />
             </div>
             <span className="text-xs text-gray-400 tabular-nums">{pet.hunger}%</span>
           </div>

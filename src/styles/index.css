@@ -4,15 +4,17 @@
 
 @layer base {
   :root {
-    --color-primary: #6BCF7A;
-    --color-primary-dark: #4CAF50;
-    --color-bg: #F5F5F5;
+    --color-primary: #7B9FFF;
+    --color-primary-light: #A78BFA;
+    --color-primary-dark: #5B7FE8;
+    --color-bg: #EEF2FF;
     --color-surface: #FFFFFF;
-    --color-text-primary: #1A1A1A;
-    --color-text-secondary: #8E8E93;
+    --color-text-primary: #1E1E2E;
+    --color-text-secondary: #6B7280;
+    --color-accent-blue: #7B9FFF;
+    --color-accent-purple: #A78BFA;
+    --color-accent-pink: #F472B6;
     --color-accent-orange: #FF9500;
-    --color-accent-blue: #007AFF;
-    --color-accent-pink: #FF7EB3;
     --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   }
 
@@ -25,16 +27,31 @@
   }
 
   body {
-    @apply bg-[var(--color-bg)] text-[var(--color-text-primary)] font-sans;
+    background: linear-gradient(135deg, #EEF2FF 0%, #F5F0FF 50%, #FDF2F8 100%);
+    color: var(--color-text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 100dvh;
   }
 
   #root {
     min-height: 100dvh;
+    display: flex;
+    justify-content: center;
   }
 }
 
 @layer components {
+  /* Mobile container: constrain to phone width on desktop */
+  .mobile-container {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #EEF2FF 0%, #F5F0FF 50%, #FDF2F8 100%);
+    min-height: 100dvh;
+    position: relative;
+    box-shadow: 0 0 60px rgba(123, 159, 255, 0.08);
+  }
+
   .safe-bottom {
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 64px);
   }
@@ -46,5 +63,66 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(123, 159, 255, 0.06);
+  }
+
+  /* Jelly button */
+  .jelly-btn {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(123, 159, 255, 0.2);
+    border-radius: 14px;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+  }
+
+  .jelly-btn:active {
+    transform: scale(0.96);
+    background: rgba(123, 159, 255, 0.12);
+    border-color: rgba(123, 159, 255, 0.4);
+  }
+
+  /* Primary jelly button */
+  .jelly-btn-primary {
+    background: linear-gradient(135deg, #7B9FFF, #A78BFA);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 16px rgba(123, 159, 255, 0.3);
+    cursor: pointer;
+  }
+
+  .jelly-btn-primary:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 8px rgba(123, 159, 255, 0.2);
+  }
+
+  /* Card with glass effect */
+  .jelly-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(123, 159, 255, 0.04);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+  }
+
+  .jelly-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 20px rgba(123, 159, 255, 0.1);
   }
 }

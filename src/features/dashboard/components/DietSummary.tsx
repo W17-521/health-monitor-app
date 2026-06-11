@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { MetricCard } from '@/components/ui';
 import { formatKcal, formatPercent } from '@/utils/format';
 import type { DietSummary } from '@/types';
@@ -7,8 +8,10 @@ interface DietSummaryProps {
 }
 
 export function DietSummary({ data }: DietSummaryProps) {
+  const navigate = useNavigate();
+
   return (
-    <MetricCard>
+    <MetricCard onClick={() => navigate('/diet')}>
       <p className="text-xs text-gray-500 mb-2">饮食摘要</p>
       <p className="text-sm font-semibold">
         今日已摄入 <span className="text-accent-orange">{formatKcal(data.caloriesConsumed)}</span>

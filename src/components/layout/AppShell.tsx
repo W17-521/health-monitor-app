@@ -3,7 +3,7 @@ import { BottomNav } from './BottomNav';
 
 export function AppShell() {
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-[var(--color-bg)]">
+    <div className="mobile-container flex flex-col">
       <main className="flex-1 pb-20 safe-bottom">
         <Outlet />
       </main>

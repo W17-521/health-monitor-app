@@ -11,7 +11,7 @@ export function MetricCard({ children, onClick, className = '' }: MetricCardProp
   return (
     <Component
       onClick={onClick}
-      className={`bg-surface rounded-card p-4 shadow-sm ${onClick ? 'active:scale-[0.98] transition-transform cursor-pointer' : ''} ${className}`}
+      className={`${onClick ? 'jelly-card' : 'glass-card'} ${className}`}
     >
       {children}
     </Component>

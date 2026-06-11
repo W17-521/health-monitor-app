@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { CaretRight } from '@phosphor-icons/react';
-import { MetricCard } from '@/components/ui';
 
 const MENU_ITEMS = [
   { label: '目标设定', path: '/profile/settings' },
@@ -14,7 +13,7 @@ export function SettingsList() {
   const navigate = useNavigate();
 
   return (
-    <MetricCard>
+    <div className="glass-card p-4">
       <p className="text-xs text-gray-500 mb-2">设置</p>
       <div className="divide-y divide-gray-50 -mx-4">
         {MENU_ITEMS.map((item, i) => (
@@ -28,6 +27,6 @@ export function SettingsList() {
           </button>
         ))}
       </div>
-    </MetricCard>
+    </div>
   );
 }

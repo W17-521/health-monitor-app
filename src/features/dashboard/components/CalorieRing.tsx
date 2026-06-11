@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { ProgressRing } from '@/components/ui';
 import type { DailyStats } from '@/types';
 
@@ -6,11 +7,12 @@ interface CalorieRingProps {
 }
 
 export function CalorieRing({ stats }: CalorieRingProps) {
+  const navigate = useNavigate();
   const percent = Math.round((stats.caloriesBurned / stats.calorieGoal) * 100);
 
   return (
     <div className="flex flex-col items-center py-4">
-      <ProgressRing percent={percent} size={150} color="#FF9500">
+      <ProgressRing percent={percent} size={150} onClick={() => navigate('/health/detail')}>
         <span className="text-2xl font-extrabold tabular-nums text-gray-900">
           {Math.round(stats.caloriesBurned)}
         </span>
@@ -18,7 +20,7 @@ export function CalorieRing({ stats }: CalorieRingProps) {
           / {stats.calorieGoal} 千卡
         </span>
       </ProgressRing>
-      <span className="mt-2 text-sm font-medium text-accent-orange">{percent}%</span>
+      <span className="mt-2 text-sm font-medium text-accent-purple">{percent}%</span>
     </div>
   );
 }
