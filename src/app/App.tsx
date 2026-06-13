@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppShell } from '@/components/layout';
-import { EmptyTab } from '@/components/shared/EmptyTab';
 import { HomeScreen } from '@/features/dashboard';
 import { ExerciseScreen, ExerciseDetailScreen, BodyPartScreen } from '@/features/exercise';
 import { ProfileScreen, SettingsScreen, BodyDataScreen, AchievementsScreen } from '@/features/profile';
 import { PetScreen } from '@/features/pet';
 import { WomenHealthScreen, HealthDetailScreen } from '@/features/health';
+import { DietScreen } from '@/features/diet';
+import { CommunityScreen } from '@/features/community';
 
 export function App() {
   return (
@@ -20,8 +21,8 @@ export function App() {
           <Route path="/pet" element={<PetScreen />} />
           <Route path="/health/detail" element={<HealthDetailScreen />} />
           <Route path="/health/women" element={<WomenHealthScreen />} />
-          <Route path="/diet" element={<EmptyTab title="饮食" />} />
-          <Route path="/community" element={<EmptyTab title="广场" />} />
+          <Route path="/diet" element={<DietScreen />} />
+          <Route path="/community" element={<CommunityScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
           <Route path="/profile/settings/:section?" element={<SettingsScreen />} />
           <Route path="/profile/body-data" element={<BodyDataScreen />} />

@@ -14,7 +14,7 @@ const TABS: Tab[] = [
   { path: '/home', label: '首页', icon: (a) => <HouseIcon size={24} weight={a ? 'fill' : 'regular'} /> },
   { path: '/exercise', label: '运动', icon: (a) => <ActivityIcon size={24} weight={a ? 'fill' : 'regular'} /> },
   { path: '/diet', label: '饮食', icon: (a) => <ForkKnifeIcon size={24} weight={a ? 'fill' : 'regular'} /> },
-  { path: '/community', label: '广场', icon: (a) => <UsersIcon size={24} weight={a ? 'fill' : 'regular'} />, disabled: true },
+  { path: '/community', label: '广场', icon: (a) => <UsersIcon size={24} weight={a ? 'fill' : 'regular'} /> },
   { path: '/profile', label: '我的', icon: (a) => <UserIcon size={24} weight={a ? 'fill' : 'regular'} /> },
 ];
 
