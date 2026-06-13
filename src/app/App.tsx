@@ -23,7 +23,7 @@ export function App() {
           <Route path="/diet" element={<EmptyTab title="饮食" />} />
           <Route path="/community" element={<EmptyTab title="广场" />} />
           <Route path="/profile" element={<ProfileScreen />} />
-          <Route path="/profile/settings" element={<SettingsScreen />} />
+          <Route path="/profile/settings/:section?" element={<SettingsScreen />} />
           <Route path="/profile/body-data" element={<BodyDataScreen />} />
           <Route path="/profile/achievements" element={<AchievementsScreen />} />
         </Route>
