@@ -4,73 +4,52 @@ import { PageHeader } from '@/components/layout';
 import { useHealthData } from '@/hooks/useHealthData';
 
 interface PetType {
-  id: string;
-  name: string;
-  emoji: string;
-  img: string;
-  desc: string;
-  bgColor: string;
-  earStyle: string;
-  faceStyle: string;
+  id: string; name: string; img: string; desc: string; bgColor: string;
 }
 
 const PET_TYPES: PetType[] = [
-  {
-    id: 'corgi', name: '小柯基', emoji: '🐕',
-    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f415.svg',
-    desc: '活泼好动的小短腿',
-    bgColor: 'from-amber-100 via-orange-50 to-yellow-100',
-    earStyle: 'rounded-tl-3xl rounded-tr-3xl',
-    faceStyle: 'rounded-3xl',
-  },
-  {
-    id: 'cat', name: '小猫咪', emoji: '🐈',
-    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f408.svg',
-    desc: '优雅傲娇的毛球',
-    bgColor: 'from-pink-100 via-rose-50 to-purple-100',
-    earStyle: 'rounded-tl-2xl rounded-tr-3xl',
-    faceStyle: 'rounded-2xl',
-  },
-  {
-    id: 'bunny', name: '小兔子', emoji: '🐰',
-    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f430.svg',
-    desc: '温柔可爱的长耳朵',
-    bgColor: 'from-rose-100 via-pink-50 to-fuchsia-100',
-    earStyle: 'rounded-t-full',
-    faceStyle: 'rounded-full',
-  },
-  {
-    id: 'hamster', name: '小仓鼠', emoji: '🐹',
-    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f439.svg',
-    desc: '软萌圆滚的小团子',
-    bgColor: 'from-orange-100 via-amber-50 to-yellow-100',
-    earStyle: 'rounded-full',
-    faceStyle: 'rounded-full',
-  },
-  {
-    id: 'panda', name: '小熊猫', emoji: '🐼',
-    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f43c.svg',
-    desc: '呆萌贪吃的黑白团',
-    bgColor: 'from-gray-100 via-slate-50 to-gray-200',
-    earStyle: 'rounded-full',
-    faceStyle: 'rounded-full',
-  },
-  {
-    id: 'fox', name: '小狐狸', emoji: '🦊',
-    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f98a.svg',
-    desc: '机灵俏皮的大尾巴',
-    bgColor: 'from-orange-100 via-amber-50 to-red-100',
-    earStyle: 'rounded-tl-3xl rounded-tr-lg',
-    faceStyle: 'rounded-2xl',
-  },
+  { id: 'corgi', name: '小柯基', desc: '活泼好动的小短腿', bgColor: 'from-amber-100 via-orange-50 to-yellow-100',
+    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f415.svg' },
+  { id: 'cat', name: '小猫咪', desc: '优雅傲娇的毛球', bgColor: 'from-pink-100 via-rose-50 to-purple-100',
+    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f408.svg' },
+  { id: 'bunny', name: '小兔子', desc: '温柔可爱的长耳朵', bgColor: 'from-rose-100 via-pink-50 to-fuchsia-100',
+    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f430.svg' },
+  { id: 'hamster', name: '小仓鼠', desc: '软萌圆滚的小团子', bgColor: 'from-orange-100 via-amber-50 to-yellow-100',
+    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f439.svg' },
+  { id: 'panda', name: '小熊猫', desc: '呆萌贪吃的黑白团', bgColor: 'from-gray-100 via-slate-50 to-gray-200',
+    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f43c.svg' },
+  { id: 'fox', name: '小狐狸', desc: '机灵俏皮的大尾巴', bgColor: 'from-orange-100 via-amber-50 to-red-100',
+    img: 'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f98a.svg' },
 ];
 
-const FOODS = [
-  { id: 'apple', emoji: '🍎', name: '苹果', kcal: 50 },
-  { id: 'steak', emoji: '🥩', name: '牛排', kcal: 200 },
-  { id: 'cake', emoji: '🍰', name: '蛋糕', kcal: 300 },
-  { id: 'salad', emoji: '🥗', name: '沙拉', kcal: 80 },
+const ALL_FOODS = [
+  // 水果蔬菜
+  { id: 'apple', emoji: '🍎', name: '苹果', kcal: 50, cat: '水果' },
+  { id: 'banana', emoji: '🍌', name: '香蕉', kcal: 80, cat: '水果' },
+  { id: 'grape', emoji: '🍇', name: '葡萄', kcal: 60, cat: '水果' },
+  { id: 'watermelon', emoji: '🍉', name: '西瓜', kcal: 40, cat: '水果' },
+  { id: 'carrot', emoji: '🥕', name: '胡萝卜', kcal: 30, cat: '蔬菜' },
+  { id: 'broccoli', emoji: '🥦', name: '西兰花', kcal: 35, cat: '蔬菜' },
+  { id: 'corn', emoji: '🌽', name: '玉米', kcal: 100, cat: '蔬菜' },
+  // 主食蛋白质
+  { id: 'steak', emoji: '🥩', name: '牛排', kcal: 200, cat: '蛋白质' },
+  { id: 'chicken', emoji: '🍗', name: '鸡腿', kcal: 180, cat: '蛋白质' },
+  { id: 'fish', emoji: '🐟', name: '鱼肉', kcal: 120, cat: '蛋白质' },
+  { id: 'egg', emoji: '🥚', name: '鸡蛋', kcal: 70, cat: '蛋白质' },
+  { id: 'rice', emoji: '🍚', name: '米饭', kcal: 150, cat: '主食' },
+  { id: 'bread', emoji: '🍞', name: '面包', kcal: 130, cat: '主食' },
+  { id: 'noodle', emoji: '🍜', name: '拉面', kcal: 160, cat: '主食' },
+  // 零食甜品
+  { id: 'cake', emoji: '🍰', name: '蛋糕', kcal: 300, cat: '甜品' },
+  { id: 'icecream', emoji: '🍦', name: '冰淇淋', kcal: 180, cat: '甜品' },
+  { id: 'cookie', emoji: '🍪', name: '曲奇', kcal: 140, cat: '甜品' },
+  { id: 'donut', emoji: '🍩', name: '甜甜圈', kcal: 250, cat: '甜品' },
+  // 饮品
+  { id: 'milk', emoji: '🥛', name: '牛奶', kcal: 90, cat: '饮品' },
+  { id: 'juice', emoji: '🧃', name: '果汁', kcal: 70, cat: '饮品' },
 ];
+
+const FOOD_CATS = ['全部', '水果', '蔬菜', '蛋白质', '主食', '甜品', '饮品'];
 
 const ACCESSORIES = [
   { emoji: '🎀', name: '蝴蝶结', points: 200 },
@@ -85,46 +64,51 @@ export function PetScreen() {
   const navigate = useNavigate();
   const { petStatus, dailyStats } = useHealthData();
 
-  const [activePetId, setActivePetId] = useState(petStatus?.type === 'dog' ? 'corgi' : petStatus?.type === 'cat' ? 'cat' : 'corgi');
+  const [activePetId, setActivePetId] = useState('corgi');
   const [showSelector, setShowSelector] = useState(false);
   const [hunger, setHunger] = useState(petStatus?.hunger ?? 80);
+  const [remainingEnergy, setRemainingEnergy] = useState(dailyStats ? Math.round(dailyStats.caloriesBurned * 0.1) : 350);
   const [feedMsg, setFeedMsg] = useState('');
   const [feedBounce, setFeedBounce] = useState(false);
   const [petReaction, setPetReaction] = useState('😊');
   const [shakeHead, setShakeHead] = useState(false);
-  const energy = dailyStats ? Math.round(dailyStats.caloriesBurned * 0.1) : 85;
+  const [foodCat, setFoodCat] = useState('全部');
+  const [showAllFood, setShowAllFood] = useState(false);
   const dropRef = useRef<HTMLDivElement>(null);
   const [dragOver, setDragOver] = useState(false);
 
   const activePet = PET_TYPES.find((p) => p.id === activePetId) ?? PET_TYPES[0];
+  const filteredFoods = foodCat === '全部' ? ALL_FOODS : ALL_FOODS.filter((f) => f.cat === foodCat);
+  const displayedFoods = showAllFood ? filteredFoods : filteredFoods.slice(0, 8);
 
   const handleFeed = useCallback((foodKcal: number, foodName: string, foodEmoji: string) => {
-    if (foodKcal > energy) {
-      setFeedMsg(`能量不足！${foodName}需要${foodKcal}千卡`);
+    if (foodKcal > remainingEnergy) {
+      setFeedMsg(`能量不足！${foodName}需要${foodKcal}千卡，剩余仅${remainingEnergy}`);
       setShakeHead(true);
       setPetReaction('😣');
       setTimeout(() => { setShakeHead(false); setPetReaction('😊'); setFeedMsg(''); }, 2000);
       return;
     }
     const newHunger = Math.min(100, hunger + foodKcal / 10);
+    const newEnergy = remainingEnergy - foodKcal;
     setHunger(newHunger);
+    setRemainingEnergy(newEnergy);
     setFeedBounce(true);
     setPetReaction(REACTIONS[Math.floor(Math.random() * REACTIONS.length)]);
-    setFeedMsg(`${foodEmoji} 喂食成功！${foodName} 消耗${foodKcal}千卡`);
+    setFeedMsg(`${foodEmoji} 喂食成功！消耗${foodKcal}千卡 · 剩余能量${newEnergy}千卡`);
     setTimeout(() => { setFeedBounce(false); setPetReaction('😊'); }, 1500);
-    setTimeout(() => setFeedMsg(''), 2500);
-  }, [hunger, energy]);
+    setTimeout(() => setFeedMsg(''), 3000);
+  }, [hunger, remainingEnergy]);
 
   const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setDragOver(true); };
   const handleDragLeave = () => setDragOver(false);
   const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
+    e.preventDefault(); setDragOver(false);
     const data = e.dataTransfer.getData('application/json');
     if (!data) return;
     try {
-      const { id, name, kcal } = JSON.parse(data);
-      handleFeed(kcal, name, FOODS.find((f) => f.id === id)?.emoji ?? '🍎');
+      const { kcal, name, emoji } = JSON.parse(data);
+      handleFeed(kcal, name, emoji);
     } catch { /* ignore */ }
   };
 
@@ -141,35 +125,26 @@ export function PetScreen() {
         {/* Pet Avatar - Drop Zone */}
         <div
           ref={dropRef}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-          className={`jelly-card p-6 flex flex-col items-center transition-all duration-300 ${
+          onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop}
+          className={`jelly-card p-5 flex flex-col items-center transition-all duration-300 ${
             dragOver ? 'ring-4 ring-purple-300 scale-[1.02] bg-purple-50/50' : ''
           } ${feedBounce ? 'animate-bounce' : ''} ${shakeHead ? 'animate-[shake_0.5s_ease-in-out]' : ''}`}
         >
           <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${activePet.bgColor} flex items-center justify-center p-3 mb-3 shadow-inner relative overflow-hidden`}>
-            <img
-              src={activePet.img} alt={activePet.name}
+            <img src={activePet.img} alt={activePet.name}
               className="w-full h-full object-contain drop-shadow-xl relative z-10 transition-transform duration-300"
               style={{ transform: feedBounce ? 'scale(1.3)' : shakeHead ? 'rotate-12' : 'scale(1)' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
-            {feedBounce && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span className="text-4xl animate-ping">💕</span>
-              </div>
-            )}
+            {feedBounce && <div className="absolute inset-0 flex items-center justify-center pointer-events-none"><span className="text-4xl animate-ping">💕</span></div>}
           </div>
           <div className="flex items-center gap-2 text-lg font-bold">
             <span>{activePet.name}</span>
             <span className="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full font-normal">Lv.{petStatus?.level ?? 5}</span>
           </div>
           <p className="text-xs text-gray-400 mt-1">{activePet.desc}</p>
-          {/* Pet reaction */}
-          <div className="text-2xl mt-2 h-8 transition-all">{petReaction}</div>
-          {feedMsg && <p className="text-xs text-accent-purple mt-1 text-center animate-pulse">{feedMsg}</p>}
-          {/* Hunger bar */}
+          <div className="text-2xl mt-2 h-8">{petReaction}</div>
+          {feedMsg && <p className="text-xs text-accent-purple mt-1 text-center px-2 leading-relaxed">{feedMsg}</p>}
           <div className="w-full mt-3 flex items-center gap-2">
             <span className="text-xs text-gray-500 w-10 shrink-0">饥饿</span>
             <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
@@ -201,37 +176,72 @@ export function PetScreen() {
           </div>
         )}
 
+        {/* Energy Status */}
+        <div className="jelly-card p-4">
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="text-sm font-semibold">可用运动能量</p>
+              <p className="text-xs text-gray-400 mt-0.5">今日消耗 {dailyStats?.caloriesBurned ?? 850}千卡 → 转化{Math.round((dailyStats?.caloriesBurned ?? 850) * 0.1)}能量</p>
+            </div>
+            <div className="text-right">
+              <p className={`text-2xl font-extrabold ${remainingEnergy < 50 ? 'text-red-400' : 'text-accent-purple'}`}>{remainingEnergy}</p>
+              <p className="text-xs text-gray-400">千卡</p>
+            </div>
+          </div>
+          <div className="h-2 bg-gray-100 rounded-full overflow-hidden mt-3">
+            <div className="h-full bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transition-all duration-500"
+              style={{ width: `${Math.min(100, (remainingEnergy / 350) * 100)}%` }} />
+          </div>
+        </div>
+
         {/* Food - Draggable */}
         <div className="jelly-card p-4">
-          <p className="text-sm font-semibold mb-2">今日可用运动能量: <span className="text-accent-purple">{energy}</span> 千卡</p>
-          <p className="text-xs text-gray-400 mb-2">可兑换食物 (拖到宠物身上喂食):</p>
+          <p className="text-sm font-semibold mb-2">可兑换食物</p>
+          <p className="text-xs text-gray-400 mb-2">拖到宠物身上喂食，或直接点击</p>
+          {/* Category filter */}
+          <div className="flex gap-1.5 overflow-x-auto pb-2 mb-2 scrollbar-hide">
+            {FOOD_CATS.map((cat) => (
+              <button key={cat} onClick={() => { setFoodCat(cat); setShowAllFood(false); }}
+                className={`shrink-0 px-3 py-1 rounded-full text-xs transition-all ${
+                  foodCat === cat ? 'bg-purple-100 text-purple-600 font-medium' : 'bg-gray-100 text-gray-500'
+                }`}>
+                {cat}
+              </button>
+            ))}
+          </div>
           <div className="grid grid-cols-2 gap-2">
-            {FOODS.map((food) => (
-              <div
-                key={food.id}
+            {displayedFoods.map((food) => (
+              <div key={food.id}
                 draggable
                 onDragStart={(e) => {
-                  e.dataTransfer.setData('application/json', JSON.stringify({ id: food.id, name: food.name, kcal: food.kcal }));
+                  e.dataTransfer.setData('application/json', JSON.stringify({ id: food.id, name: food.name, kcal: food.kcal, emoji: food.emoji }));
                   e.dataTransfer.effectAllowed = 'move';
                 }}
                 onClick={() => handleFeed(food.kcal, food.name, food.emoji)}
-                className="jelly-btn p-3 flex items-center gap-3 text-left cursor-grab active:cursor-grabbing active:scale-90"
+                className={`jelly-btn p-3 flex items-center gap-3 text-left cursor-grab active:cursor-grabbing active:scale-90 ${
+                  food.kcal > remainingEnergy ? 'opacity-40' : ''
+                }`}
               >
                 <span className="text-2xl select-none">{food.emoji}</span>
-                <div className="select-none">
-                  <p className="text-sm font-medium">{food.name}</p>
+                <div className="select-none flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate">{food.name}</p>
                   <p className="text-xs text-gray-400">{food.kcal}千卡</p>
                 </div>
               </div>
             ))}
           </div>
+          {filteredFoods.length > 8 && (
+            <button onClick={() => setShowAllFood(!showAllFood)} className="w-full mt-3 py-2 jelly-btn text-xs text-accent-purple font-medium">
+              {showAllFood ? '收起' : `查看全部 ${filteredFoods.length} 种食物`}
+            </button>
+          )}
         </div>
 
         {/* Exercise Log */}
         <div className="jelly-card p-4">
           <p className="text-sm font-semibold mb-3">运动日志</p>
           <div className="space-y-2 text-sm text-gray-600">
-            <div className="flex justify-between py-1"><span>今日消耗 {dailyStats?.caloriesBurned ?? 850}千卡</span><span className="text-accent-purple font-medium">→ 获得{energy}能量</span></div>
+            <div className="flex justify-between py-1"><span>今日消耗 {dailyStats?.caloriesBurned ?? 850}千卡</span><span className="text-accent-purple font-medium">→ 获得{Math.round((dailyStats?.caloriesBurned ?? 850) * 0.1)}能量</span></div>
             <div className="flex justify-between py-1"><span>连续运动3天</span><span>奖励胡萝卜 🥕</span></div>
           </div>
         </div>
