@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AppShell } from '@/components/layout';
 import { HomeScreen } from '@/features/dashboard';
 import { ExerciseScreen, ExerciseDetailScreen, BodyPartScreen } from '@/features/exercise';
@@ -6,11 +7,18 @@ import { ProfileScreen, SettingsScreen, BodyDataScreen, AchievementsScreen } fro
 import { PetScreen } from '@/features/pet';
 import { WomenHealthScreen, HealthDetailScreen } from '@/features/health';
 import { DietScreen } from '@/features/diet';
-import { CommunityScreen } from '@/features/community';
+import { CommunityScreen, MessagesScreen } from '@/features/community';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 export function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<AppShell />}>
           <Route path="/" element={<Navigate to="/home" replace />} />
@@ -23,6 +31,7 @@ export function App() {
           <Route path="/health/women" element={<WomenHealthScreen />} />
           <Route path="/diet" element={<DietScreen />} />
           <Route path="/community" element={<CommunityScreen />} />
+          <Route path="/community/messages" element={<MessagesScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
           <Route path="/profile/settings/:section?" element={<SettingsScreen />} />
           <Route path="/profile/body-data" element={<BodyDataScreen />} />

@@ -12,7 +12,7 @@ import { CourseRecommend } from '../components/CourseRecommend';
 import { DietSummary } from '../components/DietSummary';
 
 export function HomeScreen() {
-  const { dailyStats, weightRecords, womenHealth, petStatus, dietSummary, isLoading } = useHealthData();
+  const { dailyStats, weightRecords, womenHealth, dietSummary, isLoading } = useHealthData();
   const { courses } = useExerciseData();
 
   if (isLoading || !dailyStats) {
@@ -57,7 +57,7 @@ export function HomeScreen() {
         </div>
 
         {/* Pet Card */}
-        {petStatus && <PetCard pet={petStatus} />}
+        <PetCard />
 
         {/* Course Recommendations */}
         {courses.length > 0 && <CourseRecommend courses={courses} />}
