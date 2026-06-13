@@ -41,20 +41,21 @@ export function MessagesScreen() {
 
   if (chatWith) {
     return (
-      <div>
+      <div className="flex flex-col h-[100dvh]">
         <PageHeader title={chatWith.name} leftAction={<button onClick={() => setChatWith(null)} className="text-sm text-gray-600">← 返回</button>} />
-        <div className="px-4 space-y-3 pb-4">
-          <div className="space-y-2 min-h-[60dvh]">
-            {(msgs[chatWith.name]||[]).map((m,i) => (
-              <div key={i} className={`flex ${m.from==='我'?'justify-end':'justify-start'}`}>
-                <div className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm ${m.from==='我'?'bg-gradient-to-r from-blue-400 to-purple-400 text-white':'bg-gray-100 text-gray-700'}`}>{m.text}</div>
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
-            <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key==='Enter'&&send()} placeholder="输入消息..." className="flex-1 jelly-btn px-4 py-2.5 text-sm outline-none"/>
-            <button onClick={send} className="jelly-btn-primary px-5 py-2.5 text-sm rounded-xl">发送</button>
-          </div>
+        <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2">
+          {(msgs[chatWith.name]||[]).map((m,i) => (
+            <div key={i} className={`flex ${m.from==='我'?'justify-end':'justify-start'}`}>
+              <div className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm ${m.from==='我'?'bg-gradient-to-r from-blue-400 to-purple-400 text-white':'bg-gray-100 text-gray-700'}`}>{m.text}</div>
+            </div>
+          ))}
+        </div>
+        <div className="sticky bottom-0 px-4 py-3 bg-white/60 backdrop-blur-xl border-t border-gray-100 flex items-center gap-2"
+          style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 8px)' }}>
+          <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key==='Enter'&&send()}
+            placeholder="输入消息..." autoFocus
+            className="flex-1 jelly-btn px-4 py-2.5 text-sm outline-none" />
+          <button onClick={send} className="jelly-btn-primary px-5 py-2.5 text-sm rounded-xl shrink-0">发送</button>
         </div>
       </div>
     );

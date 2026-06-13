@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Bell, ChatDots } from '@phosphor-icons/react';
 import { PageHeader } from '@/components/layout';
 import { Skeleton } from '@/components/ui';
@@ -12,6 +13,7 @@ import { CourseRecommend } from '../components/CourseRecommend';
 import { DietSummary } from '../components/DietSummary';
 
 export function HomeScreen() {
+  const navigate = useNavigate();
   const { dailyStats, weightRecords, womenHealth, dietSummary, isLoading } = useHealthData();
   const { courses } = useExerciseData();
 
@@ -38,8 +40,8 @@ export function HomeScreen() {
     <div>
       <PageHeader
         title="健康监测"
-        leftAction={<Bell size={22} className="text-gray-700" />}
-        rightAction={<ChatDots size={22} className="text-gray-700" />}
+        leftAction={<button onClick={() => navigate('/community')} className="active:scale-75 transition-transform"><Bell size={22} className="text-gray-700" /></button>}
+        rightAction={<button onClick={() => navigate('/community/messages')} className="active:scale-75 transition-transform"><ChatDots size={22} className="text-gray-700" /></button>}
       />
 
       <div className="px-4 space-y-3 pb-4">
